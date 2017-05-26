@@ -65,7 +65,7 @@ angular.module('your_app_name', [
       windows: {
 
       }
-    };
+    }; 
     var current_platform = "",
         token = "";
 
@@ -343,6 +343,29 @@ angular.module('your_app_name', [
 
         var postId = $stateParams.postId;
         return PostService.getPost(postId);
+      }
+    }
+  })
+
+  .state('app.activity-post', {
+    url: "/activity-post/:postId",
+    views: {
+      'menuContent': {
+        templateUrl: "views/app/wordpress/activity-post.html",
+        controller: 'PostCtrl'
+      }
+    },
+    data: {
+      authenticate: true
+    },
+    resolve: {
+      post_data: function(PostService, $ionicLoading, $stateParams) {
+        $ionicLoading.show({
+          template: 'Loading post ...'
+        });
+
+        var postId = $stateParams.postId;
+        return PostService.getActivityPost(postId);
       }
     }
   })

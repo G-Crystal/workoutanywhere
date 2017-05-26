@@ -356,7 +356,7 @@ angular.module('your_app_name.controllers', [])
 
 
 // REGISTER
-.controller('RegisterCtrl', function($scope, $state, $ionicLoading, AuthService) {
+.controller('RegisterCtrl', function($scope,$rootScope, $state, $ionicLoading, AuthService) {
   $scope.user = {};
 
   $scope.doRegister = function(){
@@ -804,6 +804,8 @@ $scope.chats = {};
     });
   };
 })
+
+
 
 
 // CATEGORY

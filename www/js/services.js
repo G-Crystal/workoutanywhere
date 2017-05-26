@@ -47,6 +47,24 @@ angular.module('your_app_name.services', [])
 
     $http.jsonp(WORDPRESS_API_URL + 'get_post/' +
       '?post_id='+ postId +
+      '&insecure=cool' +
+      '&callback=JSON_CALLBACK')
+    .success(function(data) {
+      console.log(data);
+      deferred.resolve(data);
+    })
+    .error(function(data) {
+      deferred.reject(data);
+    });
+
+    return deferred.promise;
+  };
+
+  this.getActivityPost = function(postId) {
+    var deferred = $q.defer();
+
+    $http.jsonp(WORDPRESS_API_URL + 'get_post/' +
+      '?post_id='+ postId +
       '&insecure=cool&post_type=user_workouts' +
       '&callback=JSON_CALLBACK')
     .success(function(data) {
