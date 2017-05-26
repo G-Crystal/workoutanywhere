@@ -1,0 +1,90 @@
+<ion-view class="home-view">
+  <ion-nav-title>
+    <span>My Profile</span>
+  </ion-nav-title>
+  <ion-content padding="true">
+
+  <div class="profile-image">
+      <img src="{{avatar}}" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto; border-radius:50%;height:78px;width:78px;" gravatar-src="lemail" gravatar-size="200">
+    </div>
+    <h3 style="color:#000000;font-weight:300;text-align:center;">{{nicename}}</h3>
+    <div class="button-bar"></div>
+    <div class="button-bar">
+      <button style="font-weight:300;" class="button button-calm  button-block icon-left ion-fireball"></button>
+      <button style="font-weight:300;" class="button button-calm  button-block icon-left ion-android-walk"> </button>
+      <button style="font-weight:300;" class="button button-calm  button-block icon-left ion-stats-bars"></button>
+      <button style="font-weight:300;" class="button button-calm  button-block icon-left ion-android-checkmark-circle"></button>
+    </div>
+    <form class="list">
+      <ion-item class="item-divider"> My Info &amp; Goals</ion-item>
+      <label class="item item-input">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="Name" name="name" ng-model="nicename">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Email</span>
+        <input type="email" placeholder="Email" name="email" value="{{user.data.email}}">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Birthday </span>
+        <input type="date" placeholder="" ng-model="userData.user_metadata.birthday" name="birthday">
+      </label>
+      <label class="item item-select">
+        <span class="input-label">Gender</span>
+        <select ng-model="userData.user_metadata.gender" name="gender">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </label>
+      <label class="item item-select">
+        <span class="input-label">Fitness Level</span>
+        <select ng-model="userData.user_metadata.fitnessLevel" name="fitnessLevel">
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+          <option>BEAST</option>
+        </select>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Current Weight</span>
+        <input type="number" placeholder="" ng-model="currentweight" value="{{currentweight}}" name="currentWeight">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Weight Goal</span>
+        <input type="number" placeholder="0" ng-model="weightgoal" name="weightGoal">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Overall Fitness Goal?</span><textarea placeholder="" ng-model="userData.user_metadata.OFitnessGoal" name="OFitnessGoal"></textarea></label>
+      <ion-item class="item-divider"> Baseline Test Scores</ion-item>
+      <label class="item item-input">
+        <span class="input-label">Max Push-Ups (in one minute)</span>
+        <input type="number" placeholder="0" ng-model="userData.user_metadata.maxPushUp" name="maxPushUp">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Max Squats (in one minute)</span>
+        <input type="number" placeholder="0" ng-model="userData.user_metadata.maxSquats" name="maxSquats">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Max Plank Hold</span>
+        <input type="time" placeholder="0" ng-model="userData.user_metadata.maxPlankHold" name="maxPlankHold">
+      </label>
+    </form>
+    <form class="list">
+      <ion-item class="item-divider"> Connected Apps</ion-item>
+      <ion-toggle toggle-class="toggle-positive">FitBit</ion-toggle>
+      <button ng-click="saveProfileData()" class="button button-balanced  button-block">Save</button>
+    </form>
+
+    <!-- Refresh to get the new posts -->
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+    </ion-refresher>
+
+    <div class="posts">
+      <div post-card ng-repeat="post in posts" class="post-card"></div>
+    </div>
+
+    <!-- Infinit scroll -->
+    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMoreData()" distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

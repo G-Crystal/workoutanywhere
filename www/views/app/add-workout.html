@@ -1,0 +1,40 @@
+<ion-view class="home-view">
+  <ion-nav-title>
+    <span>Add Workout</span>
+  </ion-nav-title>
+  <ion-content padding="true">
+  <form class="list" ng-submit="addWorkout()">
+   <div ng-bind-html="workoutmessage"></div>
+      <label class="item item-select">
+        <span class="input-label">Workout √ ?</span>
+        <select ng-model="lesson">
+          <option>Lesson of The Day</option>
+          <option>Boot Camp</option>
+          <option>Cardio</option>
+          <option>Core</option>
+          <option>Recovery</option>
+          <option>Workout Anywhere Video</option>
+        </select>
+      </label>
+      <label class="item item-select">
+        <span class="input-label">What Level?</span>
+        <select ng-model="level">
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+        </select>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">How Long?</span>
+        <input type="text" placeholder="" ng-model="lengths">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Or, how many rounds?</span>
+        <input type="text" placeholder="" ng-model="rounds">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Overall experience?</span><textarea placeholder="" ng-model="experience"></textarea></label>
+      <button class="button button-balanced  button-block" type="submit">Submit</button>
+    </form>
+  </ion-content>
+</ion-view>

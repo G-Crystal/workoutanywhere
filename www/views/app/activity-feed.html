@@ -1,0 +1,99 @@
+<ion-view class="home-view">
+  <ion-nav-title>
+    <span>Activity Feed</span>
+  </ion-nav-title>
+   <ion-nav-buttons side="secondary">
+        <button class="button icon ion-plus-round" ui-sref="app.addworkout"></button>
+  </ion-nav-buttons>
+<ion-content>
+     <div class="list card" ng-repeat="activity in content">
+    
+       <ion-item class="item-avatar" >
+      <img ng-src="https://www.eagentplus.com/auth/imgpsh_fullsize.png">
+     <h2 ng-bind-html="activity.title"></h2>
+        <span style="font-size:12px">{{activity.date | date : "fullDate"}}</span>
+        
+
+      </ion-item>
+      
+      
+    
+    
+     <div class="item item-body">
+     <img ng-src="{{activity.img[0]}}" style="float:left;width:100%;max-width:100%;">
+     <div ng-hide="hiddenHeroes[$index]" ng-bind-html="activity.content|decode" style="font-size:12px !important;margin-top:16px;float:left"></div>
+             <p>{{activity.content}}</p>
+
+     <div ng-show="hiddenHeroes[$index]" class="hiddenDiv" ng-bind-html="renderedContent"  style="font-size:12px !important;margin-top:16px;float:left;width:100%"></div>
+     
+
+
+     
+     </div>
+     <ion-item>
+      
+      <div class="button-bar bar-positive">
+  <a class="button button-small  icon-center ion-chatbubbles"  href="http://104.198.102.210/workoutanywhere/www/#/app/post/{{activity.id}}">{{commentCount(key)}}</a>
+    <a class="button icon-center ion-star button-positive button-small" ng-click="bookmarkPost(activity)"></a>
+
+  <a class="button button-small icon-center ion-ios-paper-outline" href="http://104.198.102.210/workoutanywhere/www/#/app/post/{{activity.id}}"></a>
+</div>
+
+     
+    <div ng-show="hiddenDiv">
+
+    <div class="comments-wrapper" style="float:left;width:100%">
+             <h2 style="float:left;width:100%;margin-top:24px;">User Comments</h2>
+            <span style="float:left;width:100%;font-size:12px;"> {{nocomments}}</span>
+    <div ng-repeat="comment in pcomments" style="float:left;width:100%;padding:8px 0px;border-bottom:solid 1px rgba(0,0,0,.16);border-top:solid 1px rgba(0,0,0,.16)">
+    <span style="float:left;width:100%;">By: {{comment.author_name}}</span>
+    <span style="float:left;width:100%;font-size:12px">{{comment.date | date}}</span>
+    <div ng-bind-html="comment.content.rendered" style="float:left;width:100%;"></div>
+
+
+    </div>
+    </div>
+             <h2 style="float:left;width:100%;margin-top:16px;">Add a comment</h2>
+             <span style="float:left;width:100%;margin-bottom:16px;color:#1a74b2">{{commentMsg}}</span>
+            <div class="list">
+  <label class="item item-input" style="margin-bottom:16px;border-bottom:0px">
+  <img ng-src="{{avatar}}" style="border-radius:50px;width:36px;height:36px;margin-right:18px;">
+    <strong>{{nicename}}</strong>
+  </label>
+
+  <label class="item item-input">
+    <textarea placeholder="Write your comment..." style="height:89px;font-size:14px" ng-model="new.comment"></textarea>
+  </label>
+  <button class="button button-full button-small button-positive" ng-click="postComment(activity.id,new.comment)">
+  Place your comment
+</button>
+</div>
+     </div>
+
+    
+
+        </ion-item>
+        
+    </div>
+    
+    
+    </ion-content>
+<div class="tabs tabs-icon-top">
+  <a class="tab-item" ui-sref="app.dashboard">
+    <i class="icon ion-clock"></i>
+    Workouts
+  </a>
+  <a class="tab-item" ui-sref="app.nutrition">
+    <i class="icon ion-fork"></i>
+    Nutrition
+  </a>
+  <a class="tab-item" ui-sref="app.community">
+    <i class="icon ion-ios-chatboxes-outline"></i>
+    Community
+  </a>
+   <a class="tab-item" ui-sref="app.coach">
+    <i class="icon ion-ios-person"></i>
+    Coach
+  </a>
+</div>
+</ion-view>
