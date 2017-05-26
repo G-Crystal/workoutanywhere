@@ -425,7 +425,7 @@ $scope.addFav = function(id, title) {
 // console.log($rootScope.favs);
 
 
-}
+};
   $scope.comment_feed = function(pid){
     $scope.comments = "";
     $scope.nocomments = "Loading comments...";
@@ -440,7 +440,7 @@ $scope.pcomments = "";
         console.log(response.data);
         $scope.pcomments = response.data;
 
-        if($scope.pcomments == ""){
+        if($scope.pcomments === ""){
           $scope.nocomments = "No comments to display. Leave a comment below.";
         } else {
               $scope.nocomments = "";
@@ -455,7 +455,7 @@ $scope.pcomments = "";
 
 
   
- }
+ };
 
 
    $http.get("https://workoutanywhere.net/api-/bp-api.php")
@@ -475,7 +475,7 @@ $scope.pcomments = "";
 $scope.toggleContent = function (idx) {
 
     $scope.hiddenHeroes[idx] = !$scope.hiddenHeroes[idx];
-}
+};
 
 $scope.commentMsg = "";
 $scope.postComment = function(pid, comment){
@@ -504,7 +504,7 @@ $scope.postComment = function(pid, comment){
   
      
     
-}
+};
 
 
     $scope.hiddenDivs = false;
@@ -541,22 +541,22 @@ $scope.postComment = function(pid, comment){
     //     $scope.full = "Something went wrong";
     // });
         
-    }
+    };
     
     
     $scope.toggle = [];
 $scope.toggleFilter = function(inx) {
   $scope.toggle[inx] = $scope.toggle[inx] === false ? true : false;
-}
+};
 
     $scope.togglec = [];
 $scope.toggleFilterc = function(inx) {
   $scope.togglec[inx] = $scope.togglec[inx] === false ? true : false;
-}
+};
     
 $scope.htmlToPlaintext = function(text) {
   return text ? String(text).replace(/<[^>]+>/gm, '') : '';
-}
+};
 
 
 
@@ -587,7 +587,7 @@ $scope.htmlToPlaintext = function(text) {
    $scope.photoFind = urlArray[0];
 
 
- }
+ };
  
  
  function parseEncoded (text){
@@ -649,7 +649,7 @@ $scope.addWorkout = function(message){
 
 
      } );
-  }
+  };
 })
 
 .controller('CommunityCtrl', function($scope, $rootScope, $state, $ionicLoading, PostService, $http) {
@@ -673,7 +673,7 @@ $scope.addMessage = function(message){
         //First function handles success
         // $scope.userData = response.data[0];
         $scope.chats = response.data;
-        console.log( $scope.chats)
+        console.log( $scope.chats);
       
 
     }, function(response) {
@@ -681,7 +681,7 @@ $scope.addMessage = function(message){
     });
 
      } );
-  }
+  };
 
 
 
@@ -692,7 +692,7 @@ $scope.chats = {};
         //First function handles success
         // $scope.userData = response.data[0];
         $scope.chats = response.data;
-        console.log( $scope.chats)
+        console.log( $scope.chats);
       
 
     }, function(response) {
